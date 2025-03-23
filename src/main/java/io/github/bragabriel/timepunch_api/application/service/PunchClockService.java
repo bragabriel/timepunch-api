@@ -1,6 +1,7 @@
 package io.github.bragabriel.timepunch_api.application.service;
 
 import io.github.bragabriel.timepunch_api.application.chain.PunchClockChainHandler;
+import io.github.bragabriel.timepunch_api.application.dto.PunchClockResponse;
 import io.github.bragabriel.timepunch_api.domain.entity.PunchClock;
 import io.github.bragabriel.timepunch_api.domain.entity.User;
 import io.github.bragabriel.timepunch_api.domain.repository.PunchClockRepository;
@@ -21,13 +22,14 @@ public class PunchClockService {
 	private final PunchClockChainHandler firstHandler;
 
 	@Transactional
-	public void registerPunchClock(final Long userId) {
+	public PunchClockResponse registerPunchClock(final Long userId) {
 		User user = userRepository.findById(userId)
 				.orElseThrow(() -> new IllegalArgumentException("User not found"));
 
 		LocalDateTime registerTime = LocalDateTime.now();
 
-		List<PunchClock> userPunches = punchClockRepository.findByUserIdAndPunchTime(userId, registerTime.toLocalDate());
+		List<PunchClock> userPunches =
+				punchClockRepository.findByUserIdAndPunchDate(userId, registerTime.toLocalDate());
 
 		firstHandler.handle(user, userPunches, registerTime);
 
@@ -35,5 +37,7 @@ public class PunchClockService {
 		punchClock.setUser(user);
 		punchClock.setPunchTime(registerTime);
 		punchClockRepository.save(punchClock);
+
+		return new PunchClockResponse(userId, user.getName(), registerTime);
 	}
 }

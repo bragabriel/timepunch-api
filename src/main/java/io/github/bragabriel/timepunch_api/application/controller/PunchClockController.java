@@ -1,5 +1,6 @@
 package io.github.bragabriel.timepunch_api.application.controller;
 
+import io.github.bragabriel.timepunch_api.application.dto.PunchClockResponse;
 import io.github.bragabriel.timepunch_api.application.service.PunchClockService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -20,8 +21,8 @@ public class PunchClockController {
 
 	@PostMapping("/{userId}")
 	@Operation(summary = "Registers a work punch")
-	public ResponseEntity<Void> registerPunchClock(@PathVariable("userId") Long userId) {
-		service.registerPunchClock(userId);
-		return ResponseEntity.status(201).build();
+	public ResponseEntity<PunchClockResponse> registerPunchClock(@PathVariable("userId") Long userId) {
+		PunchClockResponse response = service.registerPunchClock(userId);
+		return ResponseEntity.status(201).body(response);
 	}
 }
