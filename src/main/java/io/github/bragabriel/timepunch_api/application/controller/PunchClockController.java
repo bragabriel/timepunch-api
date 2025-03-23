@@ -20,7 +20,7 @@ public class PunchClockController {
 
 	@PostMapping("/{userId}")
 	@Operation(summary = "Registers a work punch")
-	public ResponseEntity<Void> registerPunchClock(@PathVariable Long userId) {
+	public ResponseEntity<Void> registerPunchClock(@PathVariable("userId") Long userId) {
 		service.registerPunchClock(userId);
 		return ResponseEntity.status(201).build();
 	}

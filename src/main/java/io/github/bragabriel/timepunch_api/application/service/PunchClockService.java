@@ -27,13 +27,13 @@ public class PunchClockService {
 
 		LocalDateTime registerTime = LocalDateTime.now();
 
-		List<PunchClock> userPunches = punchClockRepository.findByUserIdAndDate(userId, registerTime.toLocalDate());
+		List<PunchClock> userPunches = punchClockRepository.findByUserIdAndPunchTime(userId, registerTime.toLocalDate());
 
 		firstHandler.handle(user, userPunches, registerTime);
 
 		PunchClock punchClock = new PunchClock();
 		punchClock.setUser(user);
-		punchClock.setTimestamp(registerTime);
+		punchClock.setPunchTime(registerTime);
 		punchClockRepository.save(punchClock);
 	}
 }
