@@ -2,7 +2,8 @@ package io.github.bragabriel.timepunch_api.application.chain;
 
 import io.github.bragabriel.timepunch_api.domain.entity.PunchClock;
 import io.github.bragabriel.timepunch_api.domain.entity.User;
-import io.github.bragabriel.timepunch_api.domain.exception.InvalidPunchClockException;
+import io.github.bragabriel.timepunch_api.domain.exception.MaxPunchesExceededException;
+import io.github.bragabriel.timepunch_api.domain.exception.PunchClockNotAllowedOnWeekendException;
 
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
@@ -14,7 +15,7 @@ public class WeekendChain extends PunchClockChainHandler {
 	public void handle(User user, List<PunchClock> punches, LocalDateTime now) {
 		//|| now.getDayOfWeek() == DayOfWeek.SUNDAY
 		if (now.getDayOfWeek() == DayOfWeek.SATURDAY) {
-			throw new InvalidPunchClockException("Work is not allowed on weekends.");
+			throw new PunchClockNotAllowedOnWeekendException();
 		}
 		super.handle(user, punches, now);
 	}
