@@ -9,14 +9,15 @@ import java.time.LocalDateTime;
 @UtilityClass
 public class PunchClockObjectMother {
 
-	public static PunchClock createPunchClockWithUser(User user){
+	public static PunchClock createPunchClockWithUser(final User user) {
 		return PunchClock.builder()
 				.user(user)
 				.punchTime(LocalDateTime.now())
 				.build();
 	}
 
-	public static PunchClock createPunchClockWithUserAndIdAndPunchTime(User user, Long id, LocalDateTime punchTime){
+	public static PunchClock createPunchClockWithUserAndIdAndPunchTime(final User user, final Long id,
+																	   final LocalDateTime punchTime) {
 		return PunchClock.builder()
 				.id(id)
 				.user(user)

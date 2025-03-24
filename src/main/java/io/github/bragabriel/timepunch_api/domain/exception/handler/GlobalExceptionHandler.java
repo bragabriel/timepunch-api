@@ -5,6 +5,7 @@ import io.github.bragabriel.timepunch_api.domain.exception.InvalidLunchBreakExce
 import io.github.bragabriel.timepunch_api.domain.exception.MaxPunchesExceededException;
 import io.github.bragabriel.timepunch_api.domain.exception.NoRecordsFoundException;
 import io.github.bragabriel.timepunch_api.domain.exception.PunchClockNotAllowedOnWeekendException;
+import io.github.bragabriel.timepunch_api.domain.exception.UserNotFoundException;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -68,9 +69,33 @@ public class GlobalExceptionHandler {
 	@ExceptionHandler(NoRecordsFoundException.class)
 	@ApiResponse(responseCode = "404",
 			description = "Not found, no records found for the specified date and user",
-			content = @Content(schema = @Schema(type = "string", example = "No records found for user ID 123 on date: 2024-12-01")))
+			content = @Content(
+					schema = @Schema(
+							type = "string",
+							example = "No records found for user ID 123 on date: 2024-12-01"))
+	)
 	public ResponseEntity<String> handleNoRecordsFoundException(
 			final NoRecordsFoundException ex) {
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
 	}
+
+	/**
+	 * Handles UserNotFoundException and returns a 404 Not Found status with the exception message.
+	 *
+	 * @param ex the exception thrown
+	 * @return ResponseEntity containing the error message and HTTP status
+	 */
+	@ExceptionHandler(UserNotFoundException.class)
+	@ApiResponse(responseCode = "404",
+			description = "Not found, user not found for the specified ID",
+			content = @Content(
+					schema = @Schema(
+							type = "string",
+							example = "User not found for ID: 123"))
+	)
+	public ResponseEntity<String> handleUserNotFoundException(
+			final UserNotFoundException ex) {
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+	}
+
 }

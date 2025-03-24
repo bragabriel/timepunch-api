@@ -1,7 +1,6 @@
 package io.github.bragabriel.timepunch_api.application.controller;
 
 import io.github.bragabriel.timepunch_api.application.dto.PunchClockResponse;
-import io.github.bragabriel.timepunch_api.application.dto.WorkedHoursRequest;
 import io.github.bragabriel.timepunch_api.application.dto.WorkedHoursResponse;
 import io.github.bragabriel.timepunch_api.application.service.PunchClockService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -9,8 +8,14 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
 
@@ -26,7 +31,7 @@ public class PunchClockController {
 	@Operation(summary = "Registers a work punch")
 	public ResponseEntity<PunchClockResponse> registerPunchClock(@PathVariable("userId") final Long userId) {
 		PunchClockResponse response = service.registerPunchClock(userId);
-		return ResponseEntity.status(201).body(response);
+		return ResponseEntity.status(HttpStatus.CREATED).body(response);
 	}
 
 	@GetMapping()

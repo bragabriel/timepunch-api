@@ -2,11 +2,11 @@ package io.github.bragabriel.timepunch_api.application.service;
 
 import io.github.bragabriel.timepunch_api.application.chain.PunchClockChainHandler;
 import io.github.bragabriel.timepunch_api.application.dto.PunchClockResponse;
-import io.github.bragabriel.timepunch_api.application.dto.WorkedHoursRequest;
 import io.github.bragabriel.timepunch_api.application.dto.WorkedHoursResponse;
 import io.github.bragabriel.timepunch_api.domain.entity.PunchClock;
 import io.github.bragabriel.timepunch_api.domain.entity.User;
 import io.github.bragabriel.timepunch_api.domain.exception.NoRecordsFoundException;
+import io.github.bragabriel.timepunch_api.domain.exception.UserNotFoundException;
 import io.github.bragabriel.timepunch_api.domain.repository.PunchClockRepository;
 import io.github.bragabriel.timepunch_api.domain.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -16,7 +16,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.List;
 
 @Service
@@ -38,7 +37,7 @@ public class PunchClockService {
 	@Transactional
 	public PunchClockResponse registerPunchClock(final Long userId) {
 		User user = userRepository.findById(userId)
-				.orElseThrow(() -> new IllegalArgumentException("User not found"));
+				.orElseThrow(() -> new UserNotFoundException(userId));
 
 		LocalDateTime registerTime = LocalDateTime.now();
 
