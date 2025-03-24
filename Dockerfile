@@ -5,6 +5,8 @@ WORKDIR /app
 # Copy code and dependencies
 COPY src ./src
 COPY pom.xml ./
+COPY checkstyle.xml ./
+COPY suppressions.xml ./
 RUN mvn clean install
 
 # Stage 2: Runtime
@@ -13,12 +15,6 @@ WORKDIR /app
 
 # Copy the built JAR
 COPY --from=build-env /app/target/*.jar ./app.jar
-
-# Env variables
-ENV SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE}
-ENV SPRING_DATASOURCE_URL=${SPRING_DATASOURCE_URL}
-ENV SPRING_DATASOURCE_USERNAME=${SPRING_DATASOURCE_USERNAME}
-ENV SPRING_DATASOURCE_PASSWORD=${SPRING_DATASOURCE_PASSWORD}
 
 # Set the entrypoint
 CMD ["java", "-jar", "./app.jar"]
