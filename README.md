@@ -20,11 +20,12 @@ Este projeto implementa uma API RESTful para o controle de ponto de funcionário
     - Execução dos testes
     - Análise de código com Checkstyle
 
-## 🔗 Fluxo de Registro de Horas Trabalhadas
+### 🔗 Fluxos da Aplicação
 
-### Design Pattern - Chain of Responsibility 🎭
+#### Registro de Horas Trabalhadas 📝
 
-Para garantir uma arquitetura modular e flexível, utilizei o **Chain of Responsibility** no fluxo de registro das 
+Para garantir uma arquitetura modular e flexível, utilizei o Design Pattern **Chain of Responsibility 🎭** no fluxo de 
+registro das 
 horas trabalhadas. Isso permite:
 
 - Separar cada validação em um handler específico.
@@ -32,9 +33,13 @@ horas trabalhadas. Isso permite:
 - Melhor organização e manutenibilidade do código.
 
 Abaixo, um fluxograma ilustrando o funcionamento dessa abordagem:
-
-![worked-hours-diagram.png](diagram/worked-hours-diagram.png)
+![register-punch-clock-diagram.png](diagram/register-punch-clock-diagram.png)
 ---
+
+#### Consulta de Horas Trabalhadas 🔍
+Abaixo, um fluxograma ilustrando o funcionamento do sistema de consulta das horas trabalhadas:
+
+![get-worked-hours-diagram.png](diagram/get-worked-hours-diagram.png)
 
 ## ⏯️ Como rodar a aplicação
 
