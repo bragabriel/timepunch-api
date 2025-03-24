@@ -32,6 +32,10 @@
 -->
 
 <module name="Checker">
+
+    <module name="SuppressionFilter">
+        <property name="file" value="suppressions.xml"/>
+    </module>
     <!--
         If you set the basedir property below, then all reported file
         names will be relative to the specified directory. See
@@ -98,7 +102,9 @@
         <module name="LocalFinalVariableName"/>
         <module name="LocalVariableName"/>
         <module name="MemberName"/>
-        <module name="MethodName"/>
+        <module name="MethodName">
+            <property name="format" value="^[a-z][a-z0-9][a-zA-Z0-9_]*$"/>
+        </module>
         <module name="PackageName"/>
         <module name="ParameterName"/>
         <module name="StaticVariableName"/>
@@ -157,13 +163,6 @@
         <module name="SimplifyBooleanExpression"/>
         <module name="SimplifyBooleanReturn"/>
 
-        <!-- Checks for class design                         -->
-        <!-- See https://checkstyle.org/checks/design/index.html -->
-        <module name="DesignForExtension"/>
-        <module name="FinalClass"/>
-        <module name="InterfaceIsType"/>
-        <module name="VisibilityModifier"/>
-
         <!-- Miscellaneous other checks.                   -->
         <!-- See https://checkstyle.org/checks/misc/index.html -->
         <module name="ArrayTypeStyle"/>
@@ -176,6 +175,11 @@
             <property name="file" value="${org.checkstyle.sun.suppressionxpathfilter.config}"
                       default="checkstyle-xpath-suppressions.xml" />
             <property name="optional" value="true"/>
+        </module>
+
+        <module name="SuppressionCommentFilter">
+            <property name="offCommentFormat" value="(.*)CHECKSTYLE:OFF(.*)"/>
+            <property name="onCommentFormat" value="(.*)CHECKSTYLE:ON(.*)"/>
         </module>
 
     </module>
