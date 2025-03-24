@@ -1,6 +1,6 @@
 # ⏰ Controle de Ponto - Web API
 
-Este projeto implementa uma API RESTful para o controle de ponto de funcionários.
+Este projeto implementa uma API para o controle de ponto de funcionários.
 
 ## 🚀 Funcionalidades
 
@@ -82,9 +82,6 @@ Execute a aplicação via Maven:
 mvn spring-boot:run
 ```
 
-Ao optar por rodar a aplicação localmente, você deve preencher as variáveis de ambiente em sua máquina. Veja mais 
-em: '[exemplo de configuração](#exemplo-de-configuração)'.
-
 ### 📌 Observações
 
 - A API estará disponível em **[http://localhost:8080](http://localhost:8080)**.
@@ -97,10 +94,18 @@ em: '[exemplo de configuração](#exemplo-de-configuração)'.
   | João    |  2  |
   | Maria   |  3  |
 
-## 🌍 Configuração do Ambiente
+---
 
-O projeto utiliza o arquivo `.env` para configurar variáveis de ambiente, como senhas e dados do banco de dados. 
-Estes segredos devem ser armazenados em locais seguros, como um gerenciador de segredos. Para fins demonstrativos, 
+<details>
+  <summary>Descontinuado Temporáriamente</summary>
+
+<b>Importante: O projeto originalmente utilizava variáveis de ambiente. No entanto, para garantir a entrega dentro do prazo, e considerando que isso não era um critério de aceite, optei por remover a injeção dessas variáveis via Dockerfile e docker-compose, pois estava causando falhas no build do projeto.
+</b>
+
+🌍 Configuração do Ambiente
+
+O projeto utiliza o arquivo `.env` para configurar variáveis de ambiente, como senhas e dados do banco de dados.
+Estes segredos devem ser armazenados em locais seguros, como um gerenciador de segredos. Para fins demonstrativos,
 forneço abaixo o formato das variáveis a serem preenchidas.
 
 ### Exemplo de configuração:
@@ -117,4 +122,6 @@ SPRING_DATASOURCE_PASSWORD=password
 A partir deste ponto, o **Docker Compose** será responsável por injetar essas variáveis de ambiente dentro do container,
 e o **Dockerfile** as utilizará durante o processo de build para configurar corretamente a aplicação.
 
-➡️ Caso prefira rodar a aplicação sem o Docker, você deve configurar as variáveis de ambiente manualmente no seu sistema
+</details>
+
+
