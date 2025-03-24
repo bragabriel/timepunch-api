@@ -1,29 +1,31 @@
-# Controle de Ponto - Web API
+# ⏰ Controle de Ponto - Web API
 
 Este projeto implementa uma API RESTful para o controle de ponto de funcionários.
 
-## Funcionalidades
+## 🚀 Funcionalidades
 
-## O projeto contempla:
+### O projeto contempla:
 
-- [x] **Contrato Open API**: Seguindo o formato de mensagens de input, response e erros.
-- [x] **Java**: Versão 21.
-- [x] **Framework**: Spring 3.4.3.
-- [x] **Banco de Dados em Memória**: H2.
-- [x] **Docker**: A aplicação está configurada para rodar via Docker. Para rodar, veja a seção: "[Como rodar a aplicação](#como-rodar-a-aplicação)".
-- [x] **Testes**: Cobertura de testes unitários e de integração.
-- [x] **GitHub Actions**: Integração contínua garantindo que cada PR aberto para a branch `main` passe por validação automatizada, incluindo:
+* **Java**: Versão 21.
+* **Framework**: Spring 3.4.3.
+* **Banco de Dados em Memória**: H2.
+* **Testes**: Cobertura de testes para garantir a funcionalidade do projeto.
+* **Contrato Open API**: Definição clara de mensagens de entrada, respostas e erros.
+* **Swagger**: Documentação interativa disponível em `/swagger-ui.html`.
+* **Checkstyle**: Garantindo coerência e padrões de código por todo o projeto.
+* **Docker**: A aplicação está configurada para rodar via Docker. Para mais detalhes, veja a seção: [Como rodar a 
+  aplicação](#como-rodar-a-aplicação).
+*  **GitHub Actions**: Integração contínua garantindo que cada PR aberto para a branch `main` passe por validação automatizada, incluindo:
     - Build da aplicação
     - Execução dos testes
     - Análise de código com Checkstyle
 
----
+## 🔗 Fluxo de Registro de Horas Trabalhadas
 
-## Fluxo de Registro de Horas Trabalhadas
+### Design Pattern - Chain of Responsibility 🎭
 
-### Design Pattern - Chain of Responsibility
-
-Para garantir uma arquitetura modular e flexível, utilizamos o **Chain of Responsibility** no fluxo de registro das horas trabalhadas. Isso permite:
+Para garantir uma arquitetura modular e flexível, utilizei o **Chain of Responsibility** no fluxo de registro das 
+horas trabalhadas. Isso permite:
 
 - Separar cada validação em um handler específico.
 - Facilitar a adição ou remoção de novas regras sem impacto nas demais.
@@ -34,23 +36,28 @@ Abaixo, um fluxograma ilustrando o funcionamento dessa abordagem:
 ![worked-hours-diagram.png](diagram/worked-hours-diagram.png)
 ---
 
-## Como rodar a aplicação
+## ⏯️ Como rodar a aplicação
 
-### 1. Via Docker (Recomendado)
+### 1. Via Docker 🐳 (Recomendado) 
 
-Clone o repositório e execute o seguinte comando:
+1. Clone o repositório:
+```bash
+git clone https://github.com/bragabriel/timepunch-api
+```
+
+2. Execute o seguinte comando:
 
 ```bash
 docker-compose up --build
 ```
-Isso irá:
+Esse comando irá:
 
-1. Construir a imagem da aplicação. 
-2. Subir o banco de dados H2. 
-3. Rodar a API localmente.
+1. Construir a imagem da aplicação.
+2. Inicializar o banco de dados H2.
+3. Executar a API localmente.
 
-### 2. Rodando Localmente sem Docker
-Caso queira rodar sem Docker, siga os passos abaixo:
+### 2. Rodando Localmente 💻 (sem Docker) 
+Caso prefira rodar sem Docker, siga os passos abaixo:
 
 1. Clone o repositório:
 
@@ -70,4 +77,14 @@ Execute a aplicação via Maven:
 mvn spring-boot:run
 ```
 
-OBS: **A API estará disponível em http://localhost:8080.**
+### 📌 Observações
+
+- A API estará disponível em **[http://localhost:8080](http://localhost:8080)**.
+- O **Swagger** estará disponível em **[http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)**
+- O projeto já inclui três usuários cadastrados para testes, sendo eles:
+
+  | Nome    | ID  |
+      |---------|----:|
+  | Gabriel |  1  |
+  | João    |  2  |
+  | Maria   |  3  |
