@@ -1,5 +1,6 @@
 package io.github.bragabriel.timepunch_api.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,5 +24,6 @@ public class User {
 	private String name;
 
 	@OneToMany(mappedBy = "user", orphanRemoval = true)
+	@JsonBackReference
 	private List<PunchClock> punchClocks;
 }

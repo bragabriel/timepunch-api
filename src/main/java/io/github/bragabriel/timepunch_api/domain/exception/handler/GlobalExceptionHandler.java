@@ -3,6 +3,7 @@ package io.github.bragabriel.timepunch_api.domain.exception.handler;
 import io.github.bragabriel.timepunch_api.application.controller.PunchClockController;
 import io.github.bragabriel.timepunch_api.domain.exception.InvalidLunchBreakException;
 import io.github.bragabriel.timepunch_api.domain.exception.MaxPunchesExceededException;
+import io.github.bragabriel.timepunch_api.domain.exception.NoRecordsFoundException;
 import io.github.bragabriel.timepunch_api.domain.exception.PunchClockNotAllowedOnWeekendException;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -56,5 +57,20 @@ public class GlobalExceptionHandler {
 	public ResponseEntity<String> handlePunchClockNotAllowedOnWeekendException(
 			final PunchClockNotAllowedOnWeekendException ex) {
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+	}
+
+	/**
+	 * Handles NoRecordsFoundException and returns a 404 Not Found status with the exception message.
+	 *
+	 * @param ex the exception thrown
+	 * @return ResponseEntity containing the error message and HTTP status
+	 */
+	@ExceptionHandler(NoRecordsFoundException.class)
+	@ApiResponse(responseCode = "404",
+			description = "Not found, no records found for the specified date and user",
+			content = @Content(schema = @Schema(type = "string", example = "No records found for user ID 123 on date: 2024-12-01")))
+	public ResponseEntity<String> handleNoRecordsFoundException(
+			final NoRecordsFoundException ex) {
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
 	}
 }
