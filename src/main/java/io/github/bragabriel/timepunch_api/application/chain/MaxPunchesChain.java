@@ -13,9 +13,11 @@ import java.util.List;
 @Qualifier("maxPunchesChain")
 public class MaxPunchesChain extends PunchClockChainHandler {
 
+	private static final int MAX_PUNCHES_ALLOWED = 4;
+
 	@Override
-	public void handle(User user, List<PunchClock> punches, LocalDateTime now) {
-		if (punches.size() >= 4) {
+	public final void handle(final User user, final List<PunchClock> punches, final LocalDateTime now) {
+		if (punches.size() >= MAX_PUNCHES_ALLOWED) {
 			throw new MaxPunchesExceededException();
 		}
 		super.handle(user, punches, now);

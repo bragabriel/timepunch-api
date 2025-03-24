@@ -15,7 +15,7 @@ import java.util.List;
 public class WeekendChain extends PunchClockChainHandler {
 
 	@Override
-	public void handle(User user, List<PunchClock> punches, LocalDateTime now) {
+	public final void handle(final User user, final List<PunchClock> punches, final LocalDateTime now) {
 		if (now.getDayOfWeek() == DayOfWeek.SATURDAY || now.getDayOfWeek() == DayOfWeek.SUNDAY) {
 			throw new PunchClockNotAllowedOnWeekendException();
 		}

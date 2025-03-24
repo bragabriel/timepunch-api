@@ -6,7 +6,6 @@ import io.github.bragabriel.timepunch_api.domain.entity.PunchClock;
 import io.github.bragabriel.timepunch_api.domain.entity.User;
 import io.github.bragabriel.timepunch_api.domain.repository.PunchClockRepository;
 import io.github.bragabriel.timepunch_api.domain.repository.UserRepository;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,8 +21,8 @@ public class PunchClockService {
 	private final PunchClockChainHandler firstHandler;
 
 	public PunchClockService(
-			PunchClockRepository punchClockRepository,
-			UserRepository userRepository,
+			final PunchClockRepository punchClockRepository,
+			final UserRepository userRepository,
 			@Qualifier("punchClockHandler") PunchClockChainHandler firstHandler) {
 		this.punchClockRepository = punchClockRepository;
 		this.userRepository = userRepository;

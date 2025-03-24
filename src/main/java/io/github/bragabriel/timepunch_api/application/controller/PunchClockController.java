@@ -21,7 +21,7 @@ public class PunchClockController {
 
 	@PostMapping("/{userId}")
 	@Operation(summary = "Registers a work punch")
-	public ResponseEntity<PunchClockResponse> registerPunchClock(@PathVariable("userId") Long userId) {
+	public ResponseEntity<PunchClockResponse> registerPunchClock(@PathVariable("userId") final Long userId) {
 		PunchClockResponse response = service.registerPunchClock(userId);
 		return ResponseEntity.status(201).body(response);
 	}

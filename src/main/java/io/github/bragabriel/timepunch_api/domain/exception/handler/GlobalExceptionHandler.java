@@ -53,7 +53,8 @@ public class GlobalExceptionHandler {
 	@ApiResponse(responseCode = "400",
 			description = "Bad request, work is not allowed on weekends",
 			content = @Content(schema = @Schema(type = "string", example = "Work is not allowed on weekends.")))
-	public ResponseEntity<String> handlePunchClockNotAllowedOnWeekendException(final PunchClockNotAllowedOnWeekendException ex) {
+	public ResponseEntity<String> handlePunchClockNotAllowedOnWeekendException(
+			final PunchClockNotAllowedOnWeekendException ex) {
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
 	}
 }

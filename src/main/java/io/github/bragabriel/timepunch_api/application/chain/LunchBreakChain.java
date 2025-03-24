@@ -14,11 +14,13 @@ import java.util.List;
 @Qualifier("lunchBreakChain")
 public class LunchBreakChain extends PunchClockChainHandler {
 
+	private static final long MIN_LUNCH_BREAK_DURATION_MINUTES = 60;
+
 	@Override
-	public void handle(User user, List<PunchClock> punches, LocalDateTime now) {
+	public final void handle(final User user, final List<PunchClock> punches, final LocalDateTime now) {
 		if (punches.size() == 2) {
 			LocalDateTime lunchStart = punches.get(1).getPunchTime();
-			if (Duration.between(lunchStart, now).toMinutes() < 60) {
+			if (Duration.between(lunchStart, now).toMinutes() < MIN_LUNCH_BREAK_DURATION_MINUTES) {
 				throw new InvalidLunchBreakException();
 			}
 		}
