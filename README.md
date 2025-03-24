@@ -41,7 +41,7 @@ Abaixo, um fluxograma ilustrando o funcionamento do sistema de consulta das hora
 
 ![get-worked-hours-diagram.png](diagram/get-worked-hours-diagram.png)
 
-## ⏯️ Como rodar a aplicação
+## Como rodar a aplicação
 
 ### 1. Via Docker 🐳 (Recomendado) 
 
