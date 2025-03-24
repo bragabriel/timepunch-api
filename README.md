@@ -92,7 +92,7 @@ em: '[exemplo de configuração](#exemplo-de-configuração)'.
 - O projeto já inclui três usuários cadastrados para testes, sendo eles:
 
   | Nome    | ID  |
-      |---------|----:|
+  |---------|----:|
   | Gabriel |  1  |
   | João    |  2  |
   | Maria   |  3  |
