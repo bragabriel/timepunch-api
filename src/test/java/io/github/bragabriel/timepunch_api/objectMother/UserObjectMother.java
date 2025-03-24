@@ -11,4 +11,12 @@ public class UserObjectMother {
 				.name("Gabriel")
 				.build();
 	}
+
+	public static User createUserWithId(){
+		return User.builder()
+				.id(1L)
+				.name("Gabriel")
+				.build();
+	}
+
 }

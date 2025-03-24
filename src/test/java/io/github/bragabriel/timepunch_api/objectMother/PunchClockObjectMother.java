@@ -15,4 +15,12 @@ public class PunchClockObjectMother {
 				.punchTime(LocalDateTime.now())
 				.build();
 	}
+
+	public static PunchClock createPunchClockWithUserAndIdAndPunchTime(User user, Long id, LocalDateTime punchTime){
+		return PunchClock.builder()
+				.id(id)
+				.user(user)
+				.punchTime(punchTime)
+				.build();
+	}
 }

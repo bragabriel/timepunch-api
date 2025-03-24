@@ -4,6 +4,7 @@ import io.github.bragabriel.timepunch_api.application.chain.LunchBreakChain;
 import io.github.bragabriel.timepunch_api.application.chain.MaxPunchesChain;
 import io.github.bragabriel.timepunch_api.application.chain.PunchClockChainHandler;
 import io.github.bragabriel.timepunch_api.application.chain.WeekendChain;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -11,14 +12,14 @@ import org.springframework.context.annotation.Configuration;
 public class PunchClockChainConfig {
 
 	@Bean
+	@Qualifier("punchClockHandler")
 	public PunchClockChainHandler punchClockHandler() {
 		PunchClockChainHandler weekendHandler = new WeekendChain();
 		PunchClockChainHandler maxPunchesHandler = new MaxPunchesChain();
 		PunchClockChainHandler lunchBreakHandler = new LunchBreakChain();
 
-		weekendHandler
-				.setNext(maxPunchesHandler)
-				.setNext(lunchBreakHandler);
+		weekendHandler.setNext(maxPunchesHandler);
+		maxPunchesHandler.setNext(lunchBreakHandler);
 
 		return weekendHandler;
 	}

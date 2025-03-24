@@ -3,12 +3,15 @@ package io.github.bragabriel.timepunch_api.application.chain;
 import io.github.bragabriel.timepunch_api.domain.entity.PunchClock;
 import io.github.bragabriel.timepunch_api.domain.entity.User;
 import io.github.bragabriel.timepunch_api.domain.exception.InvalidLunchBreakException;
-import io.github.bragabriel.timepunch_api.domain.exception.MaxPunchesExceededException;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Component
+@Qualifier("lunchBreakChain")
 public class LunchBreakChain extends PunchClockChainHandler {
 
 	@Override
