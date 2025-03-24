@@ -1,0 +1,3 @@
+INSERT INTO USERS (name) VALUES ('Gabriel')
+INSERT INTO USERS (name) VALUES ('Joao')
+INSERT INTO USERS (name) VALUES ('Maria')
