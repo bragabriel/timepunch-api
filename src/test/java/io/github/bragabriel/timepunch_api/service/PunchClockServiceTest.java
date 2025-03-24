@@ -36,7 +36,7 @@ class PunchClockServiceTest {
 	void shouldThrowNoRecordsFoundException_whenNoRecordsExistsForUserOnDate() {
 		Long userId = 1L;
 		LocalDate date = LocalDate.of(2025, 3, 23);
-		String expectedMessage="No records found for user ID 1 on date: 2025-03-23";
+		String expectedMessage = "No records found for user ID 1 on date: 2025-03-23";
 
 		when(punchClockRepository.findByUserIdAndPunchDate(userId, date))
 				.thenReturn(Collections.emptyList());

@@ -15,7 +15,7 @@ public abstract class PunchClockChainHandler {
 		return nextHandler;
 	}
 
-	public void handle(User user, List<PunchClock> punches, LocalDateTime now) {
+	public void handle(final User user, final List<PunchClock> punches, final LocalDateTime now) {
 		if (nextHandler != null) {
 			nextHandler.handle(user, punches, now);
 		}

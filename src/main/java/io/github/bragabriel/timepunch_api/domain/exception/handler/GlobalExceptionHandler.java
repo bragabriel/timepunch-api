@@ -68,7 +68,11 @@ public class GlobalExceptionHandler {
 	@ExceptionHandler(NoRecordsFoundException.class)
 	@ApiResponse(responseCode = "404",
 			description = "Not found, no records found for the specified date and user",
-			content = @Content(schema = @Schema(type = "string", example = "No records found for user ID 123 on date: 2024-12-01")))
+			content = @Content(
+					schema = @Schema(
+							type = "string",
+							example = "No records found for user ID 123 on date: 2024-12-01"))
+	)
 	public ResponseEntity<String> handleNoRecordsFoundException(
 			final NoRecordsFoundException ex) {
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
