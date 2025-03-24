@@ -77,6 +77,9 @@ Execute a aplicação via Maven:
 mvn spring-boot:run
 ```
 
+Ao optar por rodar a aplicação localmente, você deve preencher as variáveis de ambiente em sua máquina. Veja mais 
+em: '[exemplo de configuração](#exemplo-de-configuração)'.
+
 ### 📌 Observações
 
 - A API estará disponível em **[http://localhost:8080](http://localhost:8080)**.
@@ -88,3 +91,25 @@ mvn spring-boot:run
   | Gabriel |  1  |
   | João    |  2  |
   | Maria   |  3  |
+
+## 🌍 Configuração do Ambiente
+
+O projeto utiliza o arquivo `.env` para configurar variáveis de ambiente, como senhas e dados do banco de dados. 
+Estes segredos devem ser armazenados em locais seguros, como um gerenciador de segredos. Para fins demonstrativos, 
+forneço abaixo o formato das variáveis a serem preenchidas.
+
+### Exemplo de configuração:
+
+Renomeie o arquivo `.env.example` para `.env` e preencha as variáveis conforme necessário:
+
+```env
+SPRING_PROFILES_ACTIVE=prod
+SPRING_DATASOURCE_URL=jdbc:h2:mem:timepunchdb
+SPRING_DATASOURCE_USERNAME=sa
+SPRING_DATASOURCE_PASSWORD=password
+```
+
+A partir deste ponto, o **Docker Compose** será responsável por injetar essas variáveis de ambiente dentro do container,
+e o **Dockerfile** as utilizará durante o processo de build para configurar corretamente a aplicação.
+
+➡️ Caso prefira rodar a aplicação sem o Docker, você deve configurar as variáveis de ambiente manualmente no seu sistema
