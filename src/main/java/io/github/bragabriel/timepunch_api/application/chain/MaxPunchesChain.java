@@ -2,7 +2,7 @@ package io.github.bragabriel.timepunch_api.application.chain;
 
 import io.github.bragabriel.timepunch_api.domain.entity.PunchClock;
 import io.github.bragabriel.timepunch_api.domain.entity.User;
-import io.github.bragabriel.timepunch_api.domain.exception.MaxPunchesExceededException;
+import io.github.bragabriel.timepunch_api.application.exception.MaxPunchesExceededException;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 

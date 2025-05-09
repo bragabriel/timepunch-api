@@ -1,11 +1,11 @@
-package io.github.bragabriel.timepunch_api.domain.exception.handler;
+package io.github.bragabriel.timepunch_api.application.exception.handler;
 
 import io.github.bragabriel.timepunch_api.application.controller.PunchClockController;
-import io.github.bragabriel.timepunch_api.domain.exception.InvalidLunchBreakException;
-import io.github.bragabriel.timepunch_api.domain.exception.MaxPunchesExceededException;
-import io.github.bragabriel.timepunch_api.domain.exception.NoRecordsFoundException;
-import io.github.bragabriel.timepunch_api.domain.exception.PunchClockNotAllowedOnWeekendException;
-import io.github.bragabriel.timepunch_api.domain.exception.UserNotFoundException;
+import io.github.bragabriel.timepunch_api.application.exception.InvalidLunchBreakException;
+import io.github.bragabriel.timepunch_api.application.exception.MaxPunchesExceededException;
+import io.github.bragabriel.timepunch_api.application.exception.NoRecordsFoundException;
+import io.github.bragabriel.timepunch_api.application.exception.PunchClockNotAllowedOnWeekendException;
+import io.github.bragabriel.timepunch_api.application.exception.UserNotFoundException;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
