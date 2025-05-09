@@ -1,4 +1,4 @@
-package io.github.bragabriel.timepunch_api.domain.exception;
+package io.github.bragabriel.timepunch_api.application.exception;
 
 import java.time.LocalDate;
 
