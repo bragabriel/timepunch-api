@@ -24,4 +24,12 @@ public class PunchClockObjectMother {
 				.punchTime(punchTime)
 				.build();
 	}
+
+	public static PunchClock createPunchClockWithoutIdWithUserAndPunchTime(final User user,
+																																				 final LocalDateTime punchTime) {
+		return PunchClock.builder()
+				.user(user)
+				.punchTime(punchTime)
+				.build();
+	}
 }

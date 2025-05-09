@@ -6,7 +6,7 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class UserObjectMother {
 
-	public static User createUser() {
+	public static User createUserWithoutId() {
 		return User.builder()
 				.name("Gabriel")
 				.build();

@@ -54,7 +54,7 @@ class PunchClockRepositoryTest {
 	}
 
 	private User creteAndSaveUser() {
-		User user = UserObjectMother.createUser();
+		User user = UserObjectMother.createUserWithoutId();
 		userRepository.save(user);
 		return user;
 	}

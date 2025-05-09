@@ -3,12 +3,13 @@ package io.github.bragabriel.timepunch_api.chain;
 import io.github.bragabriel.timepunch_api.application.chain.MaxPunchesChain;
 import io.github.bragabriel.timepunch_api.domain.entity.PunchClock;
 import io.github.bragabriel.timepunch_api.domain.entity.User;
-import io.github.bragabriel.timepunch_api.domain.exception.MaxPunchesExceededException;
+import io.github.bragabriel.timepunch_api.application.exception.MaxPunchesExceededException;
 import io.github.bragabriel.timepunch_api.objectMother.PunchClockObjectMother;
 import io.github.bragabriel.timepunch_api.objectMother.UserObjectMother;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -19,6 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
+@ActiveProfiles("test")
 class MaxPunchChainTest {
 
 	@Autowired

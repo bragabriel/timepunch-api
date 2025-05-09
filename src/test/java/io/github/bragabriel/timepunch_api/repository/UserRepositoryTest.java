@@ -18,7 +18,7 @@ class UserRepositoryTest {
 
 	@Test
 	void saveTest() {
-		User user = UserObjectMother.createUser();
+		User user = UserObjectMother.createUserWithoutId();
 		var savedUser = userRepository.save(user);
 
 		Assertions.assertNotNull(savedUser.getId());
@@ -28,7 +28,7 @@ class UserRepositoryTest {
 
 	@Test
 	void findByIdTest() {
-		User user = UserObjectMother.createUser();
+		User user = UserObjectMother.createUserWithoutId();
 		var savedUser = userRepository.save(user);
 
 		var foundUser = userRepository.findById(savedUser.getId()).orElse(null);
