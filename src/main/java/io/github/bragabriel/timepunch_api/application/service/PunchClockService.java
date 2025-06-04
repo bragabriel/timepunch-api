@@ -7,6 +7,7 @@ import io.github.bragabriel.timepunch_api.application.exception.NoRecordsFoundEx
 import io.github.bragabriel.timepunch_api.application.exception.UserNotFoundException;
 import io.github.bragabriel.timepunch_api.domain.entity.PunchClock;
 import io.github.bragabriel.timepunch_api.domain.entity.User;
+import io.github.bragabriel.timepunch_api.domain.mapper.PunchClockMapper;
 import io.github.bragabriel.timepunch_api.domain.repository.PunchClockRepository;
 import io.github.bragabriel.timepunch_api.domain.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -24,14 +25,18 @@ public class PunchClockService {
 	private final PunchClockRepository punchClockRepository;
 	private final UserRepository userRepository;
 	private final PunchClockChainHandler firstHandler;
+	private final PunchClockMapper mapper;
 
 	public PunchClockService(
 			final PunchClockRepository punchClockRepository,
 			final UserRepository userRepository,
-			@Qualifier("punchClockHandler") PunchClockChainHandler firstHandler) {
+			@Qualifier("punchClockHandler") PunchClockChainHandler firstHandler,
+			final PunchClockMapper mapper
+			) {
 		this.punchClockRepository = punchClockRepository;
 		this.userRepository = userRepository;
 		this.firstHandler = firstHandler;
+		this.mapper = mapper;
 	}
 
 	@Transactional
@@ -51,7 +56,9 @@ public class PunchClockService {
 		punchClock.setPunchTime(registerTime);
 		punchClockRepository.save(punchClock);
 
-		return new PunchClockResponse(userId, user.getName(), registerTime);
+		return mapper.punchClockToResponse(punchClock);
+
+		//return new PunchClockResponse(user.getName(), registerTime);
 	}
 
 	public WorkedHoursResponse getWorkedHours(final Long userId, final LocalDate date) {
