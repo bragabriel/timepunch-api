@@ -5,6 +5,7 @@ import io.github.bragabriel.timepunch_api.application.exception.NoRecordsFoundEx
 import io.github.bragabriel.timepunch_api.application.service.PunchClockService;
 import io.github.bragabriel.timepunch_api.domain.entity.PunchClock;
 import io.github.bragabriel.timepunch_api.domain.entity.User;
+import io.github.bragabriel.timepunch_api.domain.mapper.PunchClockMapper;
 import io.github.bragabriel.timepunch_api.domain.repository.PunchClockRepository;
 import io.github.bragabriel.timepunch_api.domain.repository.UserRepository;
 import io.github.bragabriel.timepunch_api.objectMother.PunchClockObjectMother;
@@ -36,6 +37,9 @@ class PunchClockServiceTest {
 
 	@Autowired
 	private UserRepository userRepository;
+
+	@Autowired
+	private PunchClockMapper punchClockMapper;
 
 	@Test
 	void shouldThrowNoRecordsFoundException_whenNoRecordsExistsForUserOnDate() {
@@ -72,6 +76,21 @@ class PunchClockServiceTest {
 		WorkedHoursResponse response = punchClockService.getWorkedHours(savedUser.getId(), date);
 
 		assertEquals("04:00", response.totalWorkedHours());
+	}
+
+	@Test
+	void shouldRegisterPunchClock() {
+		// Arrange
+		User user = UserObjectMother.createUserWithoutId();
+		var savedUser = userRepository.save(user);
+
+		// Act
+		var response = punchClockService.registerPunchClock(savedUser.getId());
+
+		// Assert
+		assertNotNull(response);
+		assertEquals(response.name(), savedUser.getName());
+		assertNotNull(response.timePunch());
 	}
 
 }
