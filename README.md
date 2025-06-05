@@ -1,6 +1,6 @@
 # TimePunch API
 
-## 📌 Projeto de Estudos: Conceitos & Tecnologias
+## 📌 Projeto de Estudos, Conceitos & Tecnologias
 
 Este repositório é um projeto de estudos, onde aplico diferentes conceitos de desenvolvimento de software e integro 
 diversas tecnologias para aprimorar e praticar meus conhecimentos.
@@ -27,9 +27,9 @@ A aplicação implementa um sistema simples de controle de ponto
 
 ---
 
-## 🔗 Fluxos da Aplicação
+## 🔗 Fluxos da Aplicação & Conceitos na Prática
 
-### 📝 Registro de Horas Trabalhadas
+### 📝 Registro de Horas Trabalhadas & Design Pattern (Chain of Responsibility)
 
 A implementação do registro de ponto segue o padrão de projeto **Chain of Responsibility**, garantindo modularidade e flexibilidade:
 
@@ -37,15 +37,19 @@ A implementação do registro de ponto segue o padrão de projeto **Chain of Res
 - Facilita a adição de novas regras sem impactar o restante do sistema.
 - Código mais organizado e manutenível.
 
-Fluxograma:  
 ![register-punch-clock-diagram.png](diagram/register-punch-clock-diagram.png)
 
 ### 🔍 Consulta de Horas Trabalhadas
 
 O sistema permite consultar as horas trabalhadas de cada funcionário.
 
-Fluxograma:  
 ![get-worked-hours-diagram.png](diagram/get-worked-hours-diagram.png)
+
+### Mapper para conversão entre objetos
+
+Utilização da biblioteca Map-Structure para a [vídeo aula]() sobre mapper.
+
+![mapper-diagram.png](diagram/mapper-diagram.png)
 
 ---
 
@@ -86,6 +90,7 @@ Fluxograma:
 - Swagger UI: http://localhost:8080/swagger-ui/index.html
 
 ### 💬 Usuários de Teste:
+Usuários para teste da aplicação
 
 | Nome    | ID  |
 |---------|----:|
@@ -101,3 +106,11 @@ desenvolvimento backend.
 A ideia é explorar tecnologias, testar padrões, quebrar coisas (e consertá-las depois), além de garantir que cada aprendizado fique bem documentado.
 
 Sinta-se à vontade para dar sugestões, abrir PRs ou simplesmente rodar e testar. Bora codar! 🚀
+
+---
+
+## 👨‍💻 Author
+
+Created by Gabriel Braga — [LinkedIn](https://www.linkedin.com/in/gabriel-braga-da-silva/) |
+[Twitter](https://x.com/gbraga_dev) |
+[YouTube](https://www.youtube.com/@gabrielbragadev)
