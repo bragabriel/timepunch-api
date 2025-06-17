@@ -47,7 +47,7 @@ O sistema permite consultar as horas trabalhadas de cada funcionário.
 
 ### Mapper para conversão entre objetos
 
-Utilização da biblioteca Map-Structure para a [vídeo aula]() sobre mapper.
+Utilização da biblioteca Map-Structure para a [vídeo aula](https://www.youtube.com/playlist?list=PLJY_r_7q1iG_Ns5AA1Lahv1SYHcc3VA6Q) sobre mapper.
 
 ![mapper-diagram.png](diagram/mapper-diagram.png)
 
